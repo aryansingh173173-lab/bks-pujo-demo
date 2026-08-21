@@ -1,3 +1,22 @@
+
+  window.BKS_I18N_EXTRA = {
+    en: {
+      heroEyebrow: "For corporate sponsors and organisational partners",
+      heroTitle: "A sponsorship conversation. Not a four-day booking.",
+      heroLede: "Durga Puja is when Bengal gathers outdoors. Bharatiya Krishak Samaj Pujo places the farmer and Integrated Farming inside that civic week — so an organisation can enter a named public platform while it is being shaped. Civic window: 16–20 October 2026, Kolkata. Venue details will be announced through the official Puja channels. Payment is not taken through this experience."
+    },
+    bn: {
+      heroEyebrow: "কর্পোরেট স্পন্সর ও প্রতিষ্ঠানিক অংশীদারদের জন্য",
+      heroTitle: "একটি স্পন্সরশিপ আলোচনা। চার দিনের বুকিং নয়।",
+      heroLede: "দুর্গাপূজা হলো যখন বাংলা বাইরে একত্র হয়। ভারতীয় কৃষক সমাজ পূজা সেই নাগরিক সপ্তাহে কৃষক ও সমন্বিত চাষকে স্থান দেয় — যাতে একটি প্রতিষ্ঠান শুধু প্যান্ডেলের দেয়ালে জায়গা কেনার বদলে একটি নামকরা জনমঞ্চে প্রবেশ করতে পারে। নাগরিক সময়: ১৬–২০ অক্টোবর ২০২৬, কলকাতা। পূজার স্থানের বিবরণ অফিসিয়াল পূজা চ্যানেলের মাধ্যমে ঘোষণা হবে। এই অভিজ্ঞতায় অর্থ নেওয়া হয় না।"
+    },
+    hi: {
+      heroEyebrow: "कॉर्पोरेट प्रायोजकों और संस्थागत भागीदारों के लिए",
+      heroTitle: "एक प्रायोजन बातचीत। चार दिनों की बुकिंग नहीं।",
+      heroLede: "दुर्गा पूजा वह समय है जब बंगाल बाहर एकत्र होता है। भारतीय कृषक समाज पूजा उस नागरिक सप्ताह में किसान और समेकित कृषि को स्थान देती है — ताकि कोई संस्थान केवल पंडाल की दीवार पर जगह खरीदने के बजाय एक नामित सार्वजनिक मंच में प्रवेश कर सके। नागरिक अवधि: 16–20 अक्टूबर 2026, कोलकाता। पूजा स्थल की जानकारी आधिकारिक पूजा माध्यमों से घोषित होगी। इस अनुभव में भुगतान नहीं लिया जाता।"
+    }
+  };
+
 (function () {
   "use strict";
 
