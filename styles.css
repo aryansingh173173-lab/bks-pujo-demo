@@ -192,6 +192,15 @@ a:hover {
   border-bottom: 1px solid var(--line);
 }
 
+.wrap-photo {
+  width: var(--page);
+  margin: 0 auto 2rem;
+}
+
+.wrap-photo figcaption {
+  color: var(--paper-dim);
+}
+
 .hero {
   width: var(--page);
   margin: 0 auto;
