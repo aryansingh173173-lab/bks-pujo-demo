@@ -132,7 +132,7 @@
 
       if (statusEl) {
         statusEl.hidden = false;
-        statusEl.textContent = "File downloaded to this device. Not uploaded. Nothing here takes money.";
+        statusEl.textContent = "Interest note downloaded to your device. You can email it to contact@bkswbengal.org if you wish to continue. Payment is not taken through this experience.";
       }
     });
 

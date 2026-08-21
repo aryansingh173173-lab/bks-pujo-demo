@@ -373,6 +373,17 @@ h3 {
   padding: 0;
 }
 
+.story-chain {
+  margin: 1rem 0 1.25rem;
+  padding-left: 1.25rem;
+  max-width: 40rem;
+  line-height: 1.55;
+}
+
+.story-chain li {
+  margin: 0.35rem 0;
+}
+
 .week-list > div {
   display: grid;
   grid-template-columns: minmax(10rem, 16rem) minmax(0, 1fr);
