@@ -4,8 +4,6 @@
   var nav = document.querySelector(".nav");
   var toggle = document.getElementById("nav-toggle");
   var panel = document.getElementById("nav-panel");
-  var langButtons = document.querySelectorAll(".lang button");
-  var langBanner = document.getElementById("lang-pending");
   var form = document.getElementById("sponsor-enquiry-form");
   var statusEl = document.getElementById("form-status");
 
@@ -30,23 +28,6 @@
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") setNavOpen(false);
-  });
-
-  function setLanguage(code) {
-    document.documentElement.lang = code;
-    langButtons.forEach(function (button) {
-      button.setAttribute("aria-pressed", button.getAttribute("data-lang") === code ? "true" : "false");
-    });
-    if (langBanner) {
-      var pending = code !== "en";
-      langBanner.hidden = !pending;
-    }
-  }
-
-  langButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      setLanguage(button.getAttribute("data-lang") || "en");
-    });
   });
 
   function showError(field, show) {
@@ -142,4 +123,5 @@
       }
     });
   }
+  if (window.BKS_I18N) window.BKS_I18N.init();
 })();

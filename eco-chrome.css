@@ -132,3 +132,36 @@
     font-size: 0.86rem;
   }
 }
+
+
+.lang {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+.lang button,
+.lang select {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.lang button[aria-pressed="true"] {
+  background: #c98a1f;
+  color: #163a26;
+  border-color: #c98a1f;
+}
+.lang-banner {
+  width: min(1180px, calc(100% - 1.5rem));
+  margin: 0.5rem auto;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #c98a1f;
+  background: #f6f1e4;
+  color: #163a26;
+  font-size: 0.92rem;
+}

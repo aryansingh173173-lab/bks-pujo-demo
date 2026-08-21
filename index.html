@@ -22,22 +22,22 @@
   <link rel="stylesheet" href="eco-chrome.css">
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
   <header class="eco-bar">
     <div class="eco-bar-inner">
       <a class="eco-brand" href="https://bks-durga-puja-2026.vercel.app/site/">
         <img src="assets/bks-seal-96.png" width="36" height="36" alt="Bharatiya Krishak Samaj">
         <span class="eco-word">
-          <span class="eco-event">Bharatiya Krishak Samaj Pujo</span>
-          <span class="eco-partner">Bharatiya Krishak Samaj · Organising Partner</span>
+          <span class="eco-event" data-i18n="event">Bharatiya Krishak Samaj Pujo</span>
+          <span class="eco-partner" data-i18n="partner">Bharatiya Krishak Samaj · Organising Partner</span>
         </span>
       </a>
       <div class="eco-ky">
         <img src="assets/karmyog-21st-century-128.png" width="36" height="36" alt="">
-        <span>Organised by KarmYog for the 21st Century</span>
+        <span data-i18n="organiser">Organised by KarmYog for the 21st Century</span>
       </div>
-      <a class="eco-back" href="https://bks-durga-puja-2026.vercel.app/site/">Back to Bharatiya Krishak Samaj Pujo</a>
+      <a class="eco-back" href="https://bks-durga-puja-2026.vercel.app/site/" data-i18n="back">Back to Bharatiya Krishak Samaj Pujo</a>
     </div>
   </header>
 
@@ -55,10 +55,10 @@
           <a href="#partner">Partner</a>
           <a href="#faq">FAQ</a>
         </nav>
-        <div class="lang" role="group" aria-label="Language">
-          <button type="button" data-lang="en" aria-pressed="true">EN</button>
-          <button type="button" data-lang="bn" aria-pressed="false">BN</button>
-          <button type="button" data-lang="hi" aria-pressed="false">HI</button>
+        <div class="lang" role="group" aria-label="Language" data-i18n-aria="language">
+          <button type="button" data-lang="en" aria-pressed="true">English</button>
+          <button type="button" data-lang="bn" aria-pressed="false">বাংলা</button>
+          <button type="button" data-lang="hi" aria-pressed="false">हिन्दी</button>
         </div>
       </div>
     </div>
@@ -73,7 +73,7 @@
         <h1 id="hero-title">A sponsorship conversation. Not a four-day booking.</h1>
         <p class="lede">This page is for corporate sponsors of Bharatiya Krishak Samaj Pujo. The ask is a conversation, not a payment.</p>
         <p class="hero-actions">
-          <a class="btn" href="#enquire">Express Sponsor Interest</a>
+          <a class="btn" href="#enquire" data-i18n="interestNote">Express Sponsor Interest</a>
           <a class="btn-ghost" href="#season">Why this is not four days</a>
         </p>
       </div>
@@ -199,7 +199,7 @@
         <h2 id="partner-title">Organising partner</h2>
         <p class="credential">
           <img src="assets/karmyog-21st-century-256.png" alt="" width="32" height="32">
-          <span>Organised by KarmYog for the 21st Century</span>
+          <span data-i18n="organiser">Organised by KarmYog for the 21st Century</span>
         </p>
         <p>Bharatiya Krishak Samaj is the organising partner of this Pujo. It is not the title sponsor. The title-sponsor slot is not occupied by Bharatiya Krishak Samaj.</p>
         <p>Bharatiya Krishak Samaj, West Bengal<br>F 127, Downtown Mall, Uniworld City, New Town, Kolkata 700 156</p>
@@ -255,7 +255,7 @@
         </details>
         <details>
           <summary>What is confirmed, and what is only proposed?</summary>
-          <p>Confirmed here: the event name, organiser, organising partner, civic dates, Kolkata, venue to be announced, title status pending confirmation, and that this website takes no payment. Proposed: ₹1 lakh seed, not collected here. Target: about 5,000 farms or patrons. Assumed: Title ₹10 lakh and Category ₹2.5 lakh.</p>
+          <p>Confirmed here: the event name, organiser, organising partner, civic dates, Kolkata, venue to be announced, title status pending confirmation, and that this website takes no payment. Proposed: ₹1 lakh seed, in full or ₹20,000 every two months, not collected here. Target: about 5,000 farms or patrons. ₹50 crore is the arithmetic of that target (5,000 × ₹1 lakh), not funds already raised. Assumed: Title ₹10 lakh and Category ₹2.5 lakh.</p>
         </details>
         <details>
           <summary>What does expressing interest actually do?</summary>
@@ -274,6 +274,10 @@
           <p>Bharatiya Krishak Samaj Pujo is organised by KarmYog for the 21st Century.</p>
         </details>
         <details>
+          <summary>What is FarmTech and AgriTech here?</summary>
+          <p>On this project, FarmTech and AgriTech names the careful-tools layer already written into the Integrated Farming model: monitoring, drip, pond energy and diagnostics where they help a small farm. That is a model-based sketch. A fuller public definition is to be confirmed. This page does not list vendors or promise yields.</p>
+        </details>
+        <details>
           <summary>What is the title sponsor status?</summary>
           <p>Pending confirmation. No title sponsor is appointed on this page. Bharatiya Krishak Samaj is not the title sponsor.</p>
         </details>
@@ -281,7 +285,7 @@
     </section>
 
     <section class="enquire" id="enquire" aria-labelledby="enquire-title">
-      <h2 id="enquire-title">Express Sponsor Interest</h2>
+      <h2 id="enquire-title" data-i18n="interestNote">Express Sponsor Interest</h2>
       <p class="form-honesty">This form does not submit to a server. On send, your browser downloads bks-pujo-sponsor-enquiry.json to this device. Bharatiya Krishak Samaj does not receive the file automatically. You may email that file to <a href="mailto:contact@bkswbengal.org">contact@bkswbengal.org</a> if you wish to continue. Nothing here takes money.</p>
 
       <form id="sponsor-enquiry-form" novalidate>
@@ -300,7 +304,7 @@
           <input id="designation" name="designation" type="text" autocomplete="organization-title">
         </div>
         <div class="field">
-          <label for="phone">Phone</label>
+          <label for="phone" data-i18n="phone">Phone</label>
           <input id="phone" name="phone" type="tel" autocomplete="tel" required>
           <p class="error" hidden>Enter a phone number.</p>
         </div>
@@ -331,7 +335,7 @@
           <p class="error" hidden>Confirm you understand the file is only downloaded locally.</p>
         </div>
         <div class="field-wide form-actions">
-          <button class="btn" type="submit">Express Sponsor Interest</button>
+          <button class="btn" type="submit" data-i18n="interestNote">Express Sponsor Interest</button>
           <p id="form-status" class="form-status" role="status" hidden></p>
         </div>
       </form>
@@ -348,12 +352,12 @@
       East Kolkata Wetlands<br>
       Kolkata 700091, West Bengal
     </address>
-    <a class="eco-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Munshir%20Bheri%20Management%20Fishermen%27s%20Committee%2C%20Near%20Sukantanagar%2C%20Salt%20Lake%20Sector%20V%2C%20East%20Kolkata%20Wetlands%2C%20Kolkata%20700091%2C%20West%20Bengal" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+    <a class="eco-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Munshir%20Bheri%20Management%20Fishermen%27s%20Committee%2C%20Near%20Sukantanagar%2C%20Salt%20Lake%20Sector%20V%2C%20East%20Kolkata%20Wetlands%2C%20Kolkata%20700091%2C%20West%20Bengal" target="_blank" rel="noopener noreferrer" data-i18n="maps">Open in Google Maps</a>
   </aside>
 
   <footer class="footer">
     <p>Organised by KarmYog for the 21st Century. Organising partner: Bharatiya Krishak Samaj. Title sponsorship: pending confirmation.</p>
-    <p><a href="https://bks-durga-puja-2026.vercel.app/site/">Back to Bharatiya Krishak Samaj Pujo</a></p>
+    <p><a href="https://bks-durga-puja-2026.vercel.app/site/" data-i18n="back">Back to Bharatiya Krishak Samaj Pujo</a></p>
   </footer>
 
   <script type="application/ld+json">
@@ -368,6 +372,7 @@
     }
   }
   </script>
+  <script src="i18n.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
