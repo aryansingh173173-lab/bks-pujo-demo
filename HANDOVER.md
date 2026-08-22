@@ -1,9 +1,8 @@
 # Handover — Bharatiya Krishak Samaj Pujo, sponsor site
 
 **Repo** https://github.com/BKS-Bengal/bks-pujo-sponsor
-**Branch** `revised-brief-hero-film` — this is the work. `main` is the old site and still serves production.
-**Live preview** https://bks-pujo-sponsor-v4-0822-landscape.vercel.app
-**Current production** https://bks-pujo-sponsor.vercel.app (the old version — do not assume it reflects this branch)
+**Branch** `main` — this is live. (`revised-brief-hero-film` is the same commit; either is fine.)
+**Live site** https://bks-pujo-sponsor.vercel.app — this is production, and it now serves this branch.
 
 ---
 
@@ -22,7 +21,6 @@ Plain static HTML, CSS and JS. No framework, no build step, no dependencies to s
 ```bash
 git clone https://github.com/BKS-Bengal/bks-pujo-sponsor.git
 cd bks-pujo-sponsor
-git checkout revised-brief-hero-film
 python3 -m http.server 8777        # any static server will do
 ```
 
@@ -97,13 +95,13 @@ There is a whole section built on this — "What we will put in writing, and wha
 
 **Accessibility.** The film is muted, loops, and carries a visible pause control — WCAG 2.2.2 requires that for anything moving longer than five seconds. It is not loaded at all under `prefers-reduced-motion: reduce` or when the browser reports Save-Data; the poster frame stands in. Keep both behaviours.
 
-**Media hosting.** If you add images or video, use Vercel Blob, not Supabase Storage. Supabase image transformations blew through the plan quota on another project and are banned across these repos.
+**Media hosting.** If you add images or video, use Vercel Blob, not Supabase Storage. Supabase image transformations are not used on any of these projects — ask before introducing a new host.
 
 ## 5. Where the copy stands
 
 Most of the page was rewritten to speak to the sponsor rather than describe the organisation. That rewrite is recent and **has not yet been signed off by Bharatiya Krishak Samaj** — check with Ram before treating any given sentence as final. The 19 FAQ answers are the older approved wording and were deliberately left alone.
 
-There is an original build spec at `D:\DurgaPuja2026KrishakSamaj\CLAUDE-CODE-BUILD-SPEC-bks-pujo-sponsor-site.md` (ask Ram for a copy). Two of its instructions have been **deliberately overridden** on the client's direction: it mandates a single 44rem column throughout, and it declares its copy final and unchangeable. Both were changed. Everything else in that spec still holds, especially the honesty rules in §4 above.
+There is an original build spec for this site — ask Ram for a copy. Two of its instructions have been **deliberately overridden** on the client's direction: it mandates a single 44rem column throughout, and it declares its copy final and unchangeable. Both were changed. Everything else in that spec still holds, especially the honesty rules in §4 above.
 
 ## 6. Known open items
 
@@ -132,11 +130,13 @@ Not instructions — just where the value probably is.
 The Vercel project is **not** connected to GitHub, so pushing to `main` deploys nothing. Deploys are CLI only:
 
 ```bash
-vercel --scope ram-badrinathans-projects            # preview
-vercel --prod --scope ram-badrinathans-projects     # production
+vercel                # preview
+vercel --prod         # production
 ```
 
-**Production requires Ram's explicit approval every time.** House rule, no exceptions: tag before, deploy a preview, share it side by side with the current live URL, get the word, then promote. Do not run `--prod` because a change looks finished.
+(You will need to be added to the Vercel team first — ask Ram.)
+
+**Production requires Ram's explicit approval every time.** No exceptions: deploy a preview, share it next to the current live URL, get the word, then promote. Never run `--prod` just because a change looks finished.
 
 ## 9. Questions
 
