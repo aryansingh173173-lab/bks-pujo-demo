@@ -596,15 +596,24 @@ section{ padding-block:var(--pad-b); }
 }
 
 @media (max-width:559px){
+  /* On a phone the copy runs the full width, so there is no clear side to give the
+     film. Hold the reading band down and let the footage carry the top and the
+     bottom edge instead. Every block below is measured against the loop's
+     brightest frame, not assumed. */
   .hero__veil{
     background:linear-gradient(to bottom,
-      rgba(11,36,31,.62) 0%,
-      rgba(11,36,31,.34) 22%,
-      rgba(11,36,31,.46) 58%,
-      rgba(11,36,31,.86) 100%);
+      rgba(11,36,31,.46) 0%,
+      rgba(11,36,31,.80) 11%,
+      rgba(11,36,31,.90) 34%,
+      rgba(11,36,31,.90) 74%,
+      rgba(11,36,31,.72) 92%,
+      rgba(11,36,31,.58) 100%);
   }
   .hero__film video,.hero__film img{ opacity:1; }
-}
+  .hero__body :is(h1,p,.hero__kicker){
+    text-shadow:0 1px 2px rgba(7,23,19,.8), 0 2px 20px rgba(7,23,19,.9);
+  }
+
 
 /* ---------- reduced motion ---------- */
 
