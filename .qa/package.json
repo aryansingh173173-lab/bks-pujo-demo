@@ -1,0 +1,13 @@
+{
+  "name": "bks-pujo-sponsor-qa",
+  "private": true,
+  "type": "module",
+  "description": "QA harness for the sponsor site. Lives here, not at the repo root, so Vercel never treats the site as a Node build.",
+  "scripts": {
+    "qa": "node qa.mjs",
+    "contrast": "node contrast.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.58.0"
+  }
+}

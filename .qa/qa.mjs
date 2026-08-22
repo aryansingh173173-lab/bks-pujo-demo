@@ -1,4 +1,4 @@
-import { chromium } from 'file:///C:/Users/shobh/AppData/Roaming/npm/node_modules/playwright/index.mjs';
+import { chromium } from 'playwright';
 import fs from 'fs';
 import path from 'path';
 
