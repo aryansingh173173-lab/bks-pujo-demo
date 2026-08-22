@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OG card 1200x630 | Bharatiya Krishak Samaj Pujo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,300&display=swap">
+<style>
+  :root{
+    --ground:#0E2A25;
+    --paper:#EFF0E6;
+    --marigold:#E09413;
+    --silt-light:#9BA894;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:#0B1F1B; }
+  .card{
+    position:relative;
+    width:1200px; height:630px;
+    background:var(--ground);
+    overflow:hidden;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:0 88px;
+  }
+  .hairlines{
+    position:absolute; left:0; right:0; bottom:0; height:38%;
+    opacity:.13;
+    background-image:linear-gradient(to right,var(--marigold) 1px,transparent 1px);
+    background-size:22px 100%;
+    background-repeat:repeat-x;
+  }
+  .inner{ position:relative; z-index:1; }
+  .kicker{
+    font-family:"IBM Plex Mono",monospace; font-weight:500;
+    font-size:17px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--marigold); margin:0 0 34px;
+  }
+  h1{
+    font-family:"Newsreader",Georgia,serif; font-weight:500;
+    font-size:82px; line-height:1.02; letter-spacing:-.014em;
+    color:var(--paper); margin:0 0 18px; max-width:19ch;
+  }
+  .turn{
+    display:block;
+    font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:300;
+    font-size:60px; line-height:1.1; color:var(--marigold); margin:0 0 40px;
+  }
+  .meta{
+    font-family:"IBM Plex Mono",monospace; font-weight:500;
+    font-size:17px; letter-spacing:.13em; text-transform:uppercase;
+    color:var(--silt-light); line-height:1.7; margin:0;
+    border-top:1px solid rgba(239,240,230,.18);
+    padding-top:24px; max-width:56ch;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="hairlines"></div>
+  <div class="inner">
+    <p class="kicker">For corporate sponsors</p>
+    <h1>Bharatiya Krishak Samaj Pujo</h1>
+    <span class="turn">Corporate sponsor briefing</span>
+    <p class="meta">16&ndash;20 October 2026 &middot; Munshir Bheri, East Kolkata Wetlands, Kolkata</p>
+  </div>
+</div>
+</body>
+</html>
