@@ -3,3 +3,6 @@
 Thumbs.db
 *.log
 .env*
+
+# QA harness deps (installed with: cd .qa && npm install)
+.qa/node_modules
