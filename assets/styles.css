@@ -574,12 +574,12 @@ section{ padding-block:var(--pad-b); }
 @media (max-width:559px){
   .hero__veil{
     background:linear-gradient(to bottom,
-      rgba(14,42,37,.90) 0%,
-      rgba(14,42,37,.62) 26%,
-      rgba(14,42,37,.72) 58%,
-      rgba(14,42,37,.96) 100%);
+      rgba(14,42,37,.82) 0%,
+      rgba(14,42,37,.50) 24%,
+      rgba(14,42,37,.62) 56%,
+      rgba(14,42,37,.94) 100%);
   }
-  .hero__film video,.hero__film img{ opacity:.56; }
+  .hero__film video,.hero__film img{ opacity:.74; }
 }
 
 /* ---------- reduced motion ---------- */
