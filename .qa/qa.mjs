@@ -211,7 +211,7 @@ for (const [w, h] of [[320, 800], [375, 812], [390, 844], [768, 1024], [1024, 76
     imgsNoAlt: [...document.querySelectorAll('img')].filter(i => !i.getAttribute('alt')).length,
     labelled: [...document.querySelectorAll('input,select,textarea')].every(el =>
       el.type === 'checkbox' ? !!document.querySelector(`label[for="${el.id}"]`) : !!document.querySelector(`label[for="${el.id}"]`)),
-    stackReachable: !!document.getElementById('stack') && !!document.querySelector('a[href="#stack"]'),
+    stackReachable: !!document.getElementById('stack') && !!document.querySelector('a[href="#proposition"]'),
     interestReachable: !!document.getElementById('interest') && !!document.querySelector('a[href="#interest"]'),
   }));
   a.h1 === 1 ? pass('exactly one h1') : fail('h1 count', String(a.h1));
@@ -219,16 +219,38 @@ for (const [w, h] of [[320, 800], [375, 812], [390, 844], [768, 1024], [1024, 76
   a.sectionsLabelled ? pass('every section has a resolvable aria-labelledby') : fail('section labels');
   a.imgsNoAlt === 0 ? pass('all images have alt') : fail('images missing alt', String(a.imgsNoAlt));
   a.labelled ? pass('every form control has a label') : fail('unlabelled form control');
-  a.stackReachable && a.interestReachable ? pass('#stack and #interest anchors resolve') : fail('anchors');
+  a.stackReachable && a.interestReachable ? pass('#proposition, #stack and #interest anchors resolve') : fail('anchors');
 
-  // section 5.5 must be the tallest
-  const tallest = await page.evaluate(() => {
-    const secs = [...document.querySelectorAll('main section')].map(s => ({ id: s.id || s.getAttribute('aria-labelledby'), h: Math.round(s.getBoundingClientRect().height) }));
-    secs.sort((x, y) => y.h - x.h);
-    return secs;
+  // the page must actually use the width - landscape, not a ribbon
+  const land = await page.evaluate(() => {
+    const tracks = sel => {
+      const e = document.querySelector(sel);
+      return e ? getComputedStyle(e).gridTemplateColumns.split(' ').filter(Boolean).length : 0;
+    };
+    const frame = document.querySelector('.frame').getBoundingClientRect().width;
+    return { spread: tracks('.spread'), aud: tracks('.aud'), pledge: tracks('.pledge'),
+             positions: tracks('.positions'), faq: tracks('.faq'), layers: tracks('.layers'),
+             foot: tracks('.foot-grid'), frameW: Math.round(frame) };
   });
-  if (tallest[0].id === 'stack') pass('section 5.5 (#stack) is the tallest section', `${tallest[0].h}px vs next ${tallest[1].h}px`);
-  else fail('tallest section', JSON.stringify(tallest.slice(0, 3)));
+  land.spread === 2 ? pass('sections run as two-column spreads', `head + body`) : fail('spread columns', String(land.spread));
+  land.aud === 4 ? pass('audiences run four-up across the width') : fail('audience columns', String(land.aud));
+  land.pledge === 2 ? pass('will / never runs as a two-column spread') : fail('pledge columns', String(land.pledge));
+  land.positions === 3 ? pass('three sponsorship positions side by side') : fail('positions columns', String(land.positions));
+  land.layers === 3 ? pass('platform layers run three-up') : fail('layers columns', String(land.layers));
+  land.faq === 2 ? pass('FAQ runs in two columns') : fail('faq columns', String(land.faq));
+  land.foot === 3 ? pass('footer runs three-up') : fail('footer columns', String(land.foot));
+  land.frameW >= 1100 ? pass('content frame uses the viewport', `${land.frameW}px of 1440`) : fail('frame too narrow', `${land.frameW}px`);
+
+  // prose must still be readable - wide layout, not wide paragraphs
+  const proseMax = await page.evaluate(() =>
+    Math.max(...[...document.querySelectorAll('.prose,.aud__item p,.layer p,.qblock p,.pledge li')]
+      .map(e => e.getBoundingClientRect().width)));
+  proseMax <= 700 ? pass('no paragraph exceeds a readable measure', `widest ${Math.round(proseMax)}px`)
+                  : fail('paragraph too wide', `${Math.round(proseMax)}px`);
+
+  // the checklist of FIXED chips is gone
+  const chips = await page.evaluate(() => document.querySelectorAll('.chip').length);
+  chips === 0 ? pass('the FIXED/INDICATIVE chip checklist is gone') : fail('chips still present', String(chips));
   await ctx.close();
 }
 
