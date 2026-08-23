@@ -1,6 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Bharatiya Krishak Samaj Pujo">
-  <rect width="32" height="32" rx="6" fill="#0E2A25"/>
-  <g fill="#E09413">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EFC75E"/>
+      <stop offset="1" stop-color="#AA820A"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="6" fill="#07080B"/>
+  <g fill="url(#g)">
     <circle cx="16" cy="8.6" r="4.1"/>
     <circle cx="22.4" cy="12.3" r="4.1"/>
     <circle cx="22.4" cy="19.7" r="4.1"/>

@@ -6,3 +6,7 @@ Thumbs.db
 
 # QA harness deps (installed with: cd .qa && npm install)
 .qa/node_modules
+
+# Local QA screenshots and downloaded test fixtures
+/work/
+.gstack/
