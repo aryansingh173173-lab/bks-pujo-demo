@@ -50,6 +50,18 @@ for (const [w, h] of [[320, 800], [375, 812], [390, 844], [768, 1024], [1024, 76
   if (!errs.length) pass('no console errors');
   else fail('console errors', errs.join(' | '));
 
+  const wa = await page.evaluate(() => {
+    const a = document.querySelector('.whatsapp-float:not(.whatsapp-nav)');
+    if (!a) return null;
+    const r = a.getBoundingClientRect();
+    return { visible: r.width > 0 && r.height > 0, right: innerWidth - r.right,
+             bottom: innerHeight - r.bottom, href: a.getAttribute('href') };
+  });
+  if (wa && wa.visible && wa.right >= 0 && wa.bottom >= 0) pass('desktop WhatsApp button stays inside the viewport');
+  else fail('desktop WhatsApp position', JSON.stringify(wa));
+  if (wa && /bks-pujo-demo\.vercel\.app/.test(wa.href)) pass('WhatsApp share uses the demo URL');
+  else fail('WhatsApp share URL', wa ? wa.href : 'missing');
+
   const vid = await page.evaluate(() => {
     const v = document.getElementById('heroFilm');
     return { src: v.currentSrc || v.src, paused: v.paused, muted: v.muted, loop: v.loop,

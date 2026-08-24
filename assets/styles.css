@@ -1032,6 +1032,10 @@ section {
   transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
 }
 
+.whatsapp-nav {
+  display: none;
+}
+
 .whatsapp-float svg {
   width: 2rem;
   height: 2rem;
@@ -2332,8 +2336,13 @@ section {
 }
 
 @media (max-width:559px) {
-  .site-nav__links .whatsapp-float {
+  .whatsapp-float:not(.whatsapp-nav) {
+    display: none;
+  }
+
+  .site-nav__links .whatsapp-nav {
     position: static;
+    display: grid;
     width: 2.8rem;
     height: 2.8rem;
     margin: .35rem .8rem .75rem;
