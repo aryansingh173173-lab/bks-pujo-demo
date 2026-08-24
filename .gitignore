@@ -9,4 +9,5 @@ Thumbs.db
 
 # Local QA screenshots and downloaded test fixtures
 /work/
+/.qa/output/
 .gstack/

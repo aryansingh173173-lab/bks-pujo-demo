@@ -27,14 +27,14 @@ const VH = Number(process.env.QA_H || 900);
 const SAMPLES = Number(process.env.QA_SAMPLES || 12);   // spread across the ~10.5s loop
 const GAP_MS = 950;
 
-// Foreground colours as the hero actually paints them, black-and-gold theme.
-// Keep these in step with styles.css: heading #FAF6E8, lede #F0E4C3,
-// hero__sub / tooltip --silt-light #C9C4B5, h1 turn line --gold-bright #EFC75E.
+// Foreground colours as the hero actually paints them.
+// Keep these in step with styles.css: heading, ledes and supporting copy use
+// warm champagne #EFE5D2; the turn line uses antique gold #C28D39.
 const FG = {
-  paper:  [0xFA, 0xF6, 0xE8],
-  lede:   [0xF0, 0xE4, 0xC3],
-  silt:   [0xC9, 0xC4, 0xB5],
-  gold:   [0xEF, 0xC7, 0x5E],
+  paper:  [0xEF, 0xE5, 0xD2],
+  lede:   [0xEF, 0xE5, 0xD2],
+  silt:   [0xEF, 0xE5, 0xD2],
+  gold:   [0xC2, 0x8D, 0x39],
 };
 
 const BLOCKS = {
@@ -45,10 +45,10 @@ const BLOCKS = {
 };
 // The footage credit used to sit directly on the film and needed the dynamic
 // sample below. It is now a hover/focus tooltip on the pause button with its
-// own near-opaque backing (rgba(10,12,17,.95)) — it never reads against raw
+// own near-opaque espresso backing — it never reads against raw
 // video, so it is checked statically in the WCAG_STATIC block instead.
 const WCAG_STATIC = [
-  { name: 'footage credit tooltip', fg: [0xC9, 0xC4, 0xB5], bg: [0x0A, 0x0C, 0x11], need: 4.5 },
+  { name: 'footage credit tooltip', fg: [0xEF, 0xE5, 0xD2], bg: [0x36, 0x28, 0x22], need: 4.5 },
 ];
 
 const lin = c => { c /= 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); };

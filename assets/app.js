@@ -201,6 +201,21 @@
     }
   })();
 
+  /* ---------- partnership enquiry prefill ---------- */
+
+  (function partnershipPrefill() {
+    var links = document.querySelectorAll('[data-interest]');
+    var interest = document.getElementById('interestSelect');
+    if (!links.length || !interest) return;
+
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener('click', function () {
+        var route = this.getAttribute('data-interest');
+        if (route) interest.value = route;
+      });
+    }
+  })();
+
   /* ---------- enquiry file ---------- */
 
   (function enquiry() {
@@ -257,10 +272,10 @@
         generated_at: new Date().toISOString(),
         event: {
           name: 'Bharatiya Krishak Samaj Pujo',
-          dates: '16-20 October 2026',
-          venue: 'Munshir Bheri Management / Fishermen’s Committee, Near Sukantanagar / Salt Lake Sector V (East Kolkata Wetlands), Kolkata - 700091, West Bengal',
-          organised_by: 'KarmYog for the 21st Century',
-          organising_partner: 'Bharatiya Krishak Samaj'
+          dates: '16 to 20 October 2026',
+          venue: 'Munshir Bheri Management / Fishermen’s Committee, near Sukantanagar and Salt Lake Sector V, East Kolkata Wetlands, Kolkata 700091, West Bengal',
+          organised_by: 'KarmYog for the 21st Century Foundation',
+          organisation_partner: 'Bharatiya Krishak Samaj'
         },
         sponsor: {
           organisation: org,

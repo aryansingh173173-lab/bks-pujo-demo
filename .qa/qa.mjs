@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 const BASE = process.env.QA_BASE || 'http://127.0.0.1:8777';
-const OUT = process.env.QA_OUT || 'C:/Users/shobh/AppData/Local/Temp/claude/C--Users-shobh/e136dc87-702a-4827-abd0-77c358cf976b/scratchpad/qa';
+const OUT = process.env.QA_OUT || path.join(process.cwd(), '.qa', 'output');
 fs.mkdirSync(OUT, { recursive: true });
 
 const results = [];
@@ -119,7 +119,7 @@ for (const [w, h] of [[320, 800], [375, 812], [390, 844], [768, 1024], [1024, 76
   // 4d success
   await page.fill('#role', ' Head of CSR ');
   await page.fill('#phone', ' +91 98300 00000 ');
-  await page.selectOption('#interestSelect', 'Title position');
+  await page.selectOption('#interestSelect', 'Title Partner');
   await page.selectOption('#sector', 'FarmTech / AgriTech');
   await page.fill('#notes', '  Board wants the title position.  ');
   await page.check('#consent');
@@ -138,13 +138,13 @@ for (const [w, h] of [[320, 800], [375, 812], [390, 844], [768, 1024], [1024, 76
     ['form', j.form === 'bks-pujo-sponsor-enquiry'],
     ['version', j.version === '1.0'],
     ['generated_at ISO', /^\d{4}-\d{2}-\d{2}T.*Z$/.test(j.generated_at)],
-    ['event.dates', j.event.dates === '16-20 October 2026'],
+    ['event.dates', j.event.dates === '16 to 20 October 2026'],
     ['organisation trimmed', j.sponsor.organisation === 'Acme Agri Ltd'],
     ['name trimmed', j.sponsor.contact_name === 'Rina Sen'],
     ['role trimmed', j.sponsor.role === 'Head of CSR'],
     ['email trimmed', j.sponsor.email === 'rina@acme-agri.in'],
     ['phone trimmed', j.sponsor.phone === '+91 98300 00000'],
-    ['conversation', j.sponsor.conversation === 'Title position'],
+    ['conversation', j.sponsor.conversation === 'Title Partner'],
     ['sector', j.sponsor.sector === 'FarmTech / AgriTech'],
     ['notes trimmed', j.sponsor.notes === 'Board wants the title position.'],
     ['send_to', j.send_to === 'contact@bkswbengal.org'],
@@ -169,7 +169,7 @@ for (const [w, h] of [[320, 800], [375, 812], [390, 844], [768, 1024], [1024, 76
   const page = await ctx.newPage();
   await page.goto(BASE, { waitUntil: 'load' });
   const n = await page.locator('.faq details').count();
-  if (n === 19) pass('19 FAQ items'); else fail('FAQ count', String(n));
+  if (n === 14) pass('14 FAQ items'); else fail('FAQ count', String(n));
   const anyOpen = await page.locator('.faq details[open]').count();
   if (anyOpen === 0) pass('all FAQ closed on load'); else fail('FAQ open on load', String(anyOpen));
 
@@ -208,10 +208,12 @@ for (const [w, h] of [[320, 800], [375, 812], [390, 844], [768, 1024], [1024, 76
       const id = s.getAttribute('aria-labelledby');
       return id && document.getElementById(id);
     }),
-    imgsNoAlt: [...document.querySelectorAll('img')].filter(i => !i.getAttribute('alt')).length,
+    imgsNoAlt: [...document.querySelectorAll('img')].filter(i => !i.hasAttribute('alt')).length,
     labelled: [...document.querySelectorAll('input,select,textarea')].every(el =>
       el.type === 'checkbox' ? !!document.querySelector(`label[for="${el.id}"]`) : !!document.querySelector(`label[for="${el.id}"]`)),
-    stackReachable: !!document.getElementById('stack') && !!document.querySelector('a[href="#proposition"]'),
+    occasionReachable: !!document.getElementById('occasion') && !!document.querySelector('a[href="#occasion"]'),
+    farmReachable: !!document.getElementById('farm') && !!document.querySelector('a[href="#farm"]'),
+    contributionReachable: !!document.getElementById('contribution') && !!document.querySelector('a[href="#contribution"]'),
     interestReachable: !!document.getElementById('interest') && !!document.querySelector('a[href="#interest"]'),
   }));
   a.h1 === 1 ? pass('exactly one h1') : fail('h1 count', String(a.h1));
@@ -219,7 +221,8 @@ for (const [w, h] of [[320, 800], [375, 812], [390, 844], [768, 1024], [1024, 76
   a.sectionsLabelled ? pass('every section has a resolvable aria-labelledby') : fail('section labels');
   a.imgsNoAlt === 0 ? pass('all images have alt') : fail('images missing alt', String(a.imgsNoAlt));
   a.labelled ? pass('every form control has a label') : fail('unlabelled form control');
-  a.stackReachable && a.interestReachable ? pass('#proposition, #stack and #interest anchors resolve') : fail('anchors');
+  a.occasionReachable && a.farmReachable && a.contributionReachable && a.interestReachable
+    ? pass('primary section anchors resolve') : fail('anchors');
 
   // the page must actually use the width - landscape, not a ribbon
   const land = await page.evaluate(() => {
@@ -233,10 +236,10 @@ for (const [w, h] of [[320, 800], [375, 812], [390, 844], [768, 1024], [1024, 76
              foot: tracks('.foot-grid'), frameW: Math.round(frame) };
   });
   land.spread === 2 ? pass('sections run as two-column spreads', `head + body`) : fail('spread columns', String(land.spread));
-  land.aud === 4 ? pass('audiences run four-up across the width') : fail('audience columns', String(land.aud));
+  land.aud === 4 ? pass('partner reasons run four-up across the width') : fail('reason columns', String(land.aud));
   land.pledge === 2 ? pass('will / never runs as a two-column spread') : fail('pledge columns', String(land.pledge));
-  land.positions === 3 ? pass('three sponsorship positions side by side') : fail('positions columns', String(land.positions));
-  land.layers === 3 ? pass('platform layers run three-up') : fail('layers columns', String(land.layers));
+  land.positions === 3 ? pass('partnership routes run three-up') : fail('partnership columns', String(land.positions));
+  land.layers === 3 ? pass('build components run three-up') : fail('layers columns', String(land.layers));
   land.faq === 2 ? pass('FAQ runs in two columns') : fail('faq columns', String(land.faq));
   land.foot === 3 ? pass('footer runs three-up') : fail('footer columns', String(land.foot));
   land.frameW >= 1100 ? pass('content frame uses the viewport', `${land.frameW}px of 1440`) : fail('frame too narrow', `${land.frameW}px`);
